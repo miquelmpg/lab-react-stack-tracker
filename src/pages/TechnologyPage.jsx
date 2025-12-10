@@ -2,10 +2,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 
 function TechnologyPage({ technologies }) {
-  const techName = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
 
-  const filteredTechnology = technologies.find((tech) => tech.name === techName.slug);
+  const filteredTechnology = technologies.find((tech) => tech.slug === slug);
   
   return (
     <div className="d-flex flex-column">

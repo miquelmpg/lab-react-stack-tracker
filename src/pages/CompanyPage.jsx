@@ -2,8 +2,8 @@
 import { useParams, Link } from "react-router-dom";
 
 function CompanyPage({ companies }) {
-  const description = useParams();
-  const companyFiltered = companies.find((company) => company.name === description.companySlug);
+  const { companySlug } = useParams();
+  const companyFiltered = companies.find((company) => company.slug === companySlug);
   return (
     <div className="container">
       <h1 className="mb-5 mt-5 text-center">Company Profile</h1>
@@ -17,7 +17,7 @@ function CompanyPage({ companies }) {
       </div>
       {companyFiltered['techStack'].map((tech) => {
         return (
-        <Link to={`/tech/${tech.name}`} key={tech.name} 
+        <Link to={`/tech/${tech.slug}`} key={tech.name} 
               style={{textDecoration: 'none', color: "black", width:'150px', whiteSpace: "nowrap", overflowX: "auto"}}
               className="d-inline-block fw-semibold fs-5 text-center border-start border-end border-bottom ms-5">
           <img src={tech.image} style={{width: '50px'}} className="m-5" />
